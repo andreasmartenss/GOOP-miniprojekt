@@ -12,15 +12,15 @@ public class Product {
         this.rating = r;
     }
 
-    public String getName() {
-        return "";
+    public String setName() {
+        return name;
     }
 
-    private int getPrice() {
-        return 0;
+    private int setPrice() {
+        return price;
     }
 
-    private double getRating() {
-        return 0.0;
+    private double setRating() {
+        return rating;
     }
 }
