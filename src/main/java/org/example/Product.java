@@ -5,13 +5,13 @@ public class Product {
     String name;
     int price;
     double rating;
-    String type;
+    String productType;
 
     public Product(String n, int p, double r, String t) {
         this.name = n;
         this.price = p;
         this.rating = r;
-        this.type = t;
+        this.productType = t;
     }
 
     public String setName() {
@@ -27,6 +27,6 @@ public class Product {
     }
 
     public String getProductType() {
-        return type;
+        return productType;
     }
 }
