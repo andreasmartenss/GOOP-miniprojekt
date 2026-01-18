@@ -2,19 +2,12 @@ package org.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductManager {
 
     private final ObservableList<Product> productList = FXCollections.observableArrayList();
 
 
     public ProductManager() {
-
-
-
         productList.addAll(
                 new Product("Breaking Bad", 68,5.0, "movie"),
                 new Product("Arla Skummetmælk", 10, 5.6, "groceries"),

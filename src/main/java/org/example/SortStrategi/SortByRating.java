@@ -4,7 +4,7 @@ import org.example.Product;
 
 public class SortByRating implements SortStrategi {
     @Override
-    public int compare(Product o1, Product o2) {
-        return 0;
+    public int compare(Product r1, Product r2) {
+        return Double.compare(r1.getRating(), r2.getRating());
     }
 }

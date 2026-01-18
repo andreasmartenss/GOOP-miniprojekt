@@ -1,6 +1,9 @@
 package org.example.GUI;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,17 +16,20 @@ import javafx.stage.Stage;
 import org.example.Product;
 import javafx.scene.control.TableView;
 import org.example.ProductManager;
-
+import org.example.SortStrategi.SortByPrice;
+import org.example.SortStrategi.SortStrategi;
 
 
 public class GUI extends Application {
 
     private final ProductManager productManager = new ProductManager();
+    SortStrategi sortByPrice = new SortByPrice();
 
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -35,14 +41,25 @@ public class GUI extends Application {
         TableColumn productName = new TableColumn<Product, String>("Name");
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
 
-        TableColumn productPrice = new TableColumn<Product, Integer>("Price");
-        productPrice.setCellValueFactory(new PropertyValueFactory<Product, Integer>("price"));
+        TableColumn<Product, Integer> productPrice = new TableColumn<>("Price");
+        productPrice.setCellValueFactory(cellData ->
+                        new SimpleIntegerProperty(
+                                cellData.getValue().getPrice()
+                        ).asObject()
+        );
 
-        TableColumn productRating = new TableColumn<Product, Double>("Rating");
-        productRating.setCellValueFactory(new PropertyValueFactory<Product, Double>("rating"));
+        TableColumn<Product, Double> productRating = new TableColumn<>("Rating");
+        productRating.setCellValueFactory(cellData ->
+                        new SimpleDoubleProperty(
+                                cellData.getValue().getRating()
+                        ).asObject()
+        );
+
 
         TableColumn productType = new TableColumn<Product, String>("Type");
         productType.setCellValueFactory(new PropertyValueFactory<Product, String>("productType"));
+
+        productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
         productTable.getColumns().addAll(
                 productName,
@@ -50,6 +67,8 @@ public class GUI extends Application {
                 productRating,
                 productType
         );
+
+        FXCollections.sort(productManager.getProductList(), sortByPrice);
 
         productTable.setItems(productManager.getProductList());
 
@@ -68,8 +87,6 @@ public class GUI extends Application {
         VBox box = new VBox(headerBox, tablebox);
 
         root.setCenter(box);
-
-        Button Deletebutton = new Button(200, 200, 40, "goddag");
 
         Scene scene= new Scene(root, 1920, 1080);
 

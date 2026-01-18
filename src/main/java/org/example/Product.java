@@ -18,11 +18,11 @@ public class Product {
         return name;
     }
 
-    private int getPrice() throws PriceException {
+    public int getPrice() throws PriceException {
          return price;
     }
 
-    private double getRating() {
+    public double getRating() {
         return rating;
     }
 
