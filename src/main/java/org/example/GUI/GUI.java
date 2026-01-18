@@ -5,6 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.example.Product;
 import javafx.scene.control.TableView;
@@ -40,7 +44,19 @@ public class GUI extends Application {
         productTable.getColumns().add(productRating);
         productTable.getColumns().add(productType);
 
-        root.setCenter(productTable);
+        Text header = new Text("Products");
+        header.setFont(new Font(40));
+
+        Button deleteButton = new Button(100, 50, 30, "Delete");
+        deleteButton.setScaleX(0.4);
+        deleteButton.setScaleY(0.4);
+
+        HBox headerBox = new HBox(header, deleteButton);
+        VBox tablebox = new VBox(productTable);
+
+        VBox box = new VBox(headerBox, productTable);
+
+        root.setCenter(box);
 
         Button Deletebutton = new Button(200, 200, 40, "goddag");
 

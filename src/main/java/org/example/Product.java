@@ -18,7 +18,7 @@ public class Product {
         return name;
     }
 
-    private int setPrice(int price) throws PriceException {
+    private int setPrice(int price, String valuta) throws PriceException {
             if (price < 0 ) {
                throw new PriceException("Price cannot be negative!");
             }
