@@ -1,8 +1,8 @@
 package org.example.SortStrategi;
 
-import org.example.Product;
+import org.example.Movie;
 
 import java.util.Comparator;
 
-public interface SortStrategi extends Comparator<Product> {
+public interface SortStrategi extends Comparator<Movie> {
 }

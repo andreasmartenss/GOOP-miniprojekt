@@ -1,17 +1,17 @@
 package org.example;
 
-public class Product {
+public class Movie {
 
     String name;
     int price;
     double rating;
-    String productType;
+    String genre;
 
-    public Product(String n, int p, double r, String t) {
+    public Movie(String n, int p, double r, String g) {
         this.name = n;
         this.price = p;
         this.rating = r;
-        this.productType = t;
+        this.genre = g;
     }
 
     public String getName() {
@@ -26,8 +26,8 @@ public class Product {
         return rating;
     }
 
-    public String getProductType() {
-        return this.productType;
+    public String getGenre() {
+        return this.genre;
     }
 
     private int setPrice(int price) throws PriceException {

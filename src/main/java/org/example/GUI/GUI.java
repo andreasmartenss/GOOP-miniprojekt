@@ -13,16 +13,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.example.Product;
+import org.example.Movie;
 import javafx.scene.control.TableView;
-import org.example.ProductManager;
+import org.example.MovieManager;
 import org.example.SortStrategi.SortByPrice;
 import org.example.SortStrategi.SortStrategi;
 
 
 public class GUI extends Application {
 
-    private final ProductManager productManager = new ProductManager();
+    private final MovieManager movieManager = new MovieManager();
     SortStrategi sortByPrice = new SortByPrice();
 
 
@@ -36,19 +36,19 @@ public class GUI extends Application {
 
         BorderPane root = new BorderPane();
 
-        TableView productTable = new TableView<Product>();
+        TableView productTable = new TableView<Movie>();
 
-        TableColumn productName = new TableColumn<Product, String>("Name");
-        productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
+        TableColumn productName = new TableColumn<Movie, String>("Name");
+        productName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
 
-        TableColumn<Product, Integer> productPrice = new TableColumn<>("Price");
+        TableColumn<Movie, Integer> productPrice = new TableColumn<>("Price");
         productPrice.setCellValueFactory(cellData ->
                         new SimpleIntegerProperty(
                                 cellData.getValue().getPrice()
                         ).asObject()
         );
 
-        TableColumn<Product, Double> productRating = new TableColumn<>("Rating");
+        TableColumn<Movie, Double> productRating = new TableColumn<>("Rating");
         productRating.setCellValueFactory(cellData ->
                         new SimpleDoubleProperty(
                                 cellData.getValue().getRating()
@@ -56,8 +56,8 @@ public class GUI extends Application {
         );
 
 
-        TableColumn productType = new TableColumn<Product, String>("Type");
-        productType.setCellValueFactory(new PropertyValueFactory<Product, String>("productType"));
+        TableColumn productType = new TableColumn<Movie, String>("Genre");
+        productType.setCellValueFactory(new PropertyValueFactory<Movie, String>("genre"));
 
         productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
@@ -68,11 +68,11 @@ public class GUI extends Application {
                 productType
         );
 
-        FXCollections.sort(productManager.getProductList(), sortByPrice);
+        FXCollections.sort(movieManager.getProductList(), sortByPrice);
 
-        productTable.setItems(productManager.getProductList());
+        productTable.setItems(movieManager.getProductList());
 
-        Text header = new Text("Products");
+        Text header = new Text("Watch List");
         header.setFont(new Font(40));
 
 
@@ -94,7 +94,7 @@ public class GUI extends Application {
         Scene scene= new Scene(root, 1920, 1080);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Product List");
+        primaryStage.setTitle("Watch List");
         primaryStage.show();
     }
 
