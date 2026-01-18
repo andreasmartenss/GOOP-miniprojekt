@@ -7,5 +7,4 @@ public class SortByProductType implements SortStrategi {
     public int compare(Product o1, Product o2) {
         return o1.getProductType().compareToIgnoreCase(o2.getProductType());
     }
-
 }
