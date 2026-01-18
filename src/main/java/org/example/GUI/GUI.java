@@ -1,19 +1,26 @@
 package org.example.GUI;
 
+import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class GUI extends Scene {
+public class GUI extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStageRef = primaryStage;
 
-        primaryStage.setScene(ScannerPage.createScene());
+        BorderPane root = new BorderPane();
 
-        primaryStage.setTitle("Productlist");
+        Scene scene= new Scene(root, 1920, 1080);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Product List");
         primaryStage.show();
-
     }
 
 }
