@@ -79,6 +79,9 @@ public class GUI extends Application {
         Button deleteButton = new Button(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
+        deleteButton.setOnMousePressed(e -> {
+            productTable.getItems().remove(0);
+        });
 
 
         HBox headerBox = new HBox(header, deleteButton);
