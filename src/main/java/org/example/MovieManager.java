@@ -9,7 +9,7 @@ public class MovieManager {
 
     public MovieManager() {
         movieList.addAll(
-                new Movie("Scarface", 68,5.0, "Action"),
+                new Movie("Scarface", 68,5.0, "action"),
                 new Movie("The Godfather", 75, 4.9, "crime"),
                 new Movie("The Dark Knight", 80, 4.8, "action"),
                 new Movie("Pulp Fiction", 70, 4.7, "crime"),
