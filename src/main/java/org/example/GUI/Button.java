@@ -13,6 +13,7 @@ import javafx.util.Duration;
 public class Button extends Group {
 
     /**
+     * @author Andreas Martens
      * The different parameters determines the location and size of the textlabel in the button
      * @param x sets the x value of the label within the button
      * @param y sets the y value of the label within the button
