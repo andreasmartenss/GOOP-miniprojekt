@@ -6,6 +6,5 @@ public class ProductManager {
         Product p = new Product("Breaking Bad", 68,5.0, "Movie");
 
 
-        System.out.println(p.getProductType());
     }
 }
