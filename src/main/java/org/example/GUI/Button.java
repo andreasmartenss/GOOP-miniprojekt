@@ -24,16 +24,16 @@ public class Button extends Group {
         /**
          * the button is build up in three independent shapes
          */
-        Rectangle UIButtonRec = new Rectangle(200, 80, Color.DODGERBLUE);
+        Rectangle UIButtonRec = new Rectangle(200, 80, Color.RED);
         UIButtonRec.setX(0);
         UIButtonRec.setY(0);
 
-        Circle UIButtonCircle1 = new Circle(40, Color.DODGERBLUE);
+        Circle UIButtonCircle1 = new Circle(40, Color.RED);
         UIButtonCircle1.setCenterX(200);
         UIButtonCircle1.setCenterY(40);
 
 
-        Circle UIButtonCircle2 = new Circle(40, Color.DODGERBLUE);
+        Circle UIButtonCircle2 = new Circle(40, Color.RED);
         UIButtonCircle2.setCenterX(-5);
         UIButtonCircle2.setCenterY(40);
 
@@ -68,9 +68,9 @@ public class Button extends Group {
             st.setToY(baseY * 1.1);
             st.play();
 
-            UIButtonRec.setFill(Color.DEEPSKYBLUE);
-            UIButtonCircle1.setFill(Color.DEEPSKYBLUE);
-            UIButtonCircle2.setFill(Color.DEEPSKYBLUE);
+            UIButtonRec.setFill(Color.DARKRED);
+            UIButtonCircle1.setFill(Color.DARKRED);
+            UIButtonCircle2.setFill(Color.DARKRED);
         });
 
         /**
@@ -86,9 +86,9 @@ public class Button extends Group {
             st.setToY(baseY);
             st.play();
 
-            UIButtonRec.setFill(Color.DODGERBLUE);
-            UIButtonCircle1.setFill(Color.DODGERBLUE);
-            UIButtonCircle2.setFill(Color.DODGERBLUE);
+            UIButtonRec.setFill(Color.RED);
+            UIButtonCircle1.setFill(Color.RED);
+            UIButtonCircle2.setFill(Color.RED);
         });
 
     }

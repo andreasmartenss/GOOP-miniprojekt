@@ -42,7 +42,7 @@ public class GUI extends Application {
 
         root.setCenter(productTable);
 
-        Button button = new Button(200, 200, 40, "goddag");
+        Button Deletebutton = new Button(200, 200, 40, "goddag");
 
         Scene scene= new Scene(root, 1920, 1080);
 
