@@ -14,25 +14,26 @@ public class Product {
         this.productType = t;
     }
 
-    public String setName() {
+    public String getName() {
         return name;
     }
 
-    private int setPrice(int price, String valuta) throws PriceException {
-            if (price < 0 ) {
-               throw new PriceException("Price cannot be negative!");
-            }
-         return this.price = price;
+    private int getPrice() throws PriceException {
+         return price;
     }
 
-    private double setRating() {
+    private double getRating() {
         return rating;
     }
 
-    public String getProductType(String movie, String groceries, String books) throws ProductTypeException {
-        if (productType != movie || productType != groceries || productType != books) {
-            throw new ProductTypeException("Product type does not exist within our categories");
-        }
+    public String getProductType() {
         return this.productType;
+    }
+
+    private int setPrice(int price) throws PriceException {
+        if (price < 0 ) {
+            throw new PriceException("Price cannot be negative!");
+        }
+        return this.price = price;
     }
 }

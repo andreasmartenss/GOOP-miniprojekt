@@ -12,9 +12,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.example.Product;
 import javafx.scene.control.TableView;
+import org.example.ProductManager;
+
 
 
 public class GUI extends Application {
+
+    private final ProductManager productManager = new ProductManager();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -39,22 +44,28 @@ public class GUI extends Application {
         TableColumn productType = new TableColumn<Product, String>("Type");
         productType.setCellValueFactory(new PropertyValueFactory<Product, String>("productType"));
 
-        productTable.getColumns().add(productName);
-        productTable.getColumns().add(productPrice);
-        productTable.getColumns().add(productRating);
-        productTable.getColumns().add(productType);
+        productTable.getColumns().addAll(
+                productName,
+                productPrice,
+                productRating,
+                productType
+        );
+
+        productTable.setItems(productManager.getProductList());
 
         Text header = new Text("Products");
         header.setFont(new Font(40));
+
 
         Button deleteButton = new Button(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
 
+
         HBox headerBox = new HBox(header, deleteButton);
         VBox tablebox = new VBox(productTable);
 
-        VBox box = new VBox(headerBox, productTable);
+        VBox box = new VBox(headerBox, tablebox);
 
         root.setCenter(box);
 
