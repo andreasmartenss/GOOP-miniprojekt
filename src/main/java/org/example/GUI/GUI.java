@@ -1,4 +1,8 @@
 package org.example.GUI;
 
-public class GUI {
+import javafx.scene.Scene;
+
+public class GUI extends Scene {
+
+    
 }
