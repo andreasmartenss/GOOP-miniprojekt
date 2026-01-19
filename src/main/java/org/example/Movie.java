@@ -30,10 +30,15 @@ public class Movie {
         return this.genre;
     }
 
-    private int setPrice(int price) throws PriceException {
-        if (price < 0 ) {
-            throw new PriceException("Price cannot be negative!");
+    private int setPrice(int price) {
+        try {
+            if (price < 0 ) {
+                System.err.println("prices cannot be below 0");
+            }
+        } catch (PriceException e) {
+
         }
+
         return this.price = price;
     }
 }

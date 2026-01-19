@@ -16,14 +16,16 @@ import javafx.stage.Stage;
 import org.example.Movie;
 import javafx.scene.control.TableView;
 import org.example.MovieManager;
-import org.example.SortStrategi.SortByPrice;
-import org.example.SortStrategi.SortStrategi;
+import org.example.SortStrategi.*;
 
 
 public class GUI extends Application {
 
     private final MovieManager movieManager = new MovieManager();
     SortStrategi sortByPrice = new SortByPrice();
+    SortStrategi sortByName = new SortByName();
+    SortStrategi sortByGenre = new SortByGenre();
+    SortStrategi sortByRating = new SortByRating();
 
 
     public static void main(String[] args) {
@@ -68,7 +70,10 @@ public class GUI extends Application {
                 productType
         );
 
-        FXCollections.sort(movieManager.getProductList(), sortByPrice);
+       FXCollections.sort(movieManager.getProductList(), sortByName);
+       FXCollections.sort(movieManager.getProductList(), sortByPrice);
+       FXCollections.sort(movieManager.getProductList(), sortByGenre);
+       FXCollections.sort(movieManager.getProductList(), sortByRating);
 
         productTable.setItems(movieManager.getProductList());
 
