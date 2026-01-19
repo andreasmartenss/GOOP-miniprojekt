@@ -5,9 +5,7 @@ import javafx.collections.ObservableList;
 public class MovieManager {
 
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
-
-
-
+    
     public MovieManager() {
         movieList.addAll(
                 new Movie("Scarface", 68,5.0, "action"),
