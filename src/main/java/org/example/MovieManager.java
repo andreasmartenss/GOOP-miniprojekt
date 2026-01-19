@@ -7,6 +7,7 @@ public class MovieManager {
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
 
 
+
     public MovieManager() {
         movieList.addAll(
                 new Movie("Scarface", 68,5.0, "action"),
@@ -36,5 +37,17 @@ public class MovieManager {
     public ObservableList<Movie> getProductList() {
         return movieList;
     }
+
+    private void setPrice(Movie movie) {
+        try {
+            if (movie.getPrice() < 0 ) {
+                System.err.println("Prices must");
+            }
+        } catch (PriceException e) {
+            System.err.println("error");
+        }
+
+    }
 }
+
 

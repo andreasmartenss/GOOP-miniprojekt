@@ -19,7 +19,7 @@ public class Movie {
     }
 
     public int getPrice() {
-         return price;
+        return price;
     }
 
     public double getRating() {
@@ -28,17 +28,5 @@ public class Movie {
 
     public String getGenre() {
         return this.genre;
-    }
-
-    private int setPrice(int price) {
-        try {
-            if (price < 0 ) {
-                System.err.println("prices cannot be below 0");
-            }
-        } catch (PriceException e) {
-            System.err.println("error");
-        }
-
-        return this.price = price;
     }
 }
