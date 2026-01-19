@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 public class MovieManager {
 
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
-    
+
     public MovieManager() {
         movieList.addAll(
                 new Movie("Scarface", 68,5.0, "action"),
@@ -36,14 +36,16 @@ public class MovieManager {
         return movieList;
     }
 
-    private void setPrice(Movie movie) {
-        try {
+    public void controlPrice(Movie movie) {
             if (movie.getPrice() < 0 ) {
-                System.err.println("Prices must");
+                try {
+                    System.out.println(" ");
+                    // do something here that removes the object that contains a price below 0
+                } catch (PriceException e) {
+                    System.err.println("Error");
+                }
             }
-        } catch (PriceException e) {
-            System.err.println("error");
-        }
+
 
     }
 }
