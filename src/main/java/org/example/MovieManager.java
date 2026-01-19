@@ -16,7 +16,7 @@ public class MovieManager {
                 new Movie("Fight Club", 65, 4.6, "drama"),
                 new Movie("Inception", 78, 4.7, "sci-fi"),
                 new Movie("The Matrix", 60, 4.6, "sci-fi"),
-                new Movie("Goodfellas", 72, 4.8, "crime"),
+                new Movie("Goodfellas", -1, 4.8, "crime"),
                 new Movie("Interstellar", 85, 4.7, "sci-fi"),
                 new Movie("Gladiator", 68, 4.5, "action"),
                 new Movie("The Shawshank Redemption", 90, 5.0, "drama"),

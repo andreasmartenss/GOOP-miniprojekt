@@ -18,7 +18,7 @@ public class Movie {
         return name;
     }
 
-    public int getPrice() throws PriceException {
+    public int getPrice() {
          return price;
     }
 
@@ -36,7 +36,7 @@ public class Movie {
                 System.err.println("prices cannot be below 0");
             }
         } catch (PriceException e) {
-
+            System.err.println("error");
         }
 
         return this.price = price;
