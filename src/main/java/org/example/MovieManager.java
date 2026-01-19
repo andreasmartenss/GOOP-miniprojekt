@@ -45,8 +45,6 @@ public class MovieManager {
                     System.err.println("Error");
                 }
             }
-
-
     }
 }
 

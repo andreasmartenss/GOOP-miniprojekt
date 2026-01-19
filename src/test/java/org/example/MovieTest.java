@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MovieTest {
 
     @org.junit.jupiter.api.Test
-    void getName() {
+     void getName() {
     }
 
     @org.junit.jupiter.api.Test
