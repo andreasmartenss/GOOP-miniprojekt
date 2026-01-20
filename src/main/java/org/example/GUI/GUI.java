@@ -22,10 +22,12 @@ import org.example.SortStrategi.*;
 public class GUI extends Application {
 
     private final MovieManager movieManager = new MovieManager();
-    SortStrategi sortByPrice = new SortByPrice();
     SortStrategi sortByName = new SortByName();
+    SortStrategi sortByPrice = new SortByPrice();
     SortStrategi sortByGenre = new SortByGenre();
     SortStrategi sortByRating = new SortByRating();
+
+
 
 
     public static void main(String[] args) {
@@ -38,7 +40,7 @@ public class GUI extends Application {
 
         BorderPane root = new BorderPane();
 
-        TableView movieTable = new TableView<Movie>();
+        TableView<Movie> movieTable = new TableView<>();
 
         TableColumn movieName = new TableColumn<Movie, String>("Name");
         movieName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
@@ -70,12 +72,8 @@ public class GUI extends Application {
                 movieGenre
         );
 
-       FXCollections.sort(movieManager.getProductList(), sortByName);
-       FXCollections.sort(movieManager.getProductList(), sortByPrice);
-       FXCollections.sort(movieManager.getProductList(), sortByGenre);
-       FXCollections.sort(movieManager.getProductList(), sortByRating);
 
-        movieTable.setItems(movieManager.getProductList());
+        movieTable.setItems(movieManager.getMovieList());
 
         Text header = new Text("Watch List");
         header.setFont(new Font(40));
@@ -85,14 +83,56 @@ public class GUI extends Application {
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
-            movieTable.getItems().remove(0);
+            Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+            movieTable.getItems().remove(selectedMovie);
+        });
+
+        Button sortByNameButton = new Button(100, 50, 30, "Sort by Name");
+        sortByNameButton.setScaleX(0.4);
+        sortByNameButton.setScaleY(0.4);
+        sortByNameButton.setOnMousePressed(e -> {
+            movieManager.setSortStrategi(sortByName);
+        });
+
+        Button sortByPriceButton = new Button(100, 50, 30, "Sort by price");
+        sortByPriceButton.setScaleX(0.4);
+        sortByPriceButton.setScaleY(0.4);
+        sortByPriceButton.setOnMousePressed(e -> {
+            movieManager.setSortStrategi(sortByPrice);
         });
 
 
-        HBox headerBox = new HBox(header, deleteButton);
+        Button sortByGenreButton = new Button(100, 50, 30, "Sort by genre");
+        sortByGenreButton.setScaleX(0.4);
+        sortByGenreButton.setScaleY(0.4);
+        sortByGenreButton.setOnMousePressed(e -> {
+            movieManager.setSortStrategi(sortByGenre);
+        });
+
+        Button sortByRatingButton = new Button(100, 50, 30, "Sort by rating");
+        sortByRatingButton.setScaleX(0.4);
+        sortByRatingButton.setScaleY(0.4);
+        sortByRatingButton.setOnMousePressed(e -> {
+            movieManager.setSortStrategi(sortByRating);
+        });
+
+
+
+        HBox headerBox = new HBox(
+                header,
+                deleteButton
+        );
+
+        HBox buttonBox = new HBox(
+                sortByNameButton,
+                sortByPriceButton,
+                sortByRatingButton,
+                sortByGenreButton)
+                ;
+
         VBox tablebox = new VBox(movieTable);
 
-        VBox box = new VBox(headerBox, tablebox);
+        VBox box = new VBox(headerBox, tablebox, buttonBox);
 
         root.setCenter(box);
 

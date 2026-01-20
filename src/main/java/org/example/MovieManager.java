@@ -2,13 +2,14 @@ package org.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.example.GUI.GUI;
+import org.example.SortStrategi.SortStrategi;
 
-import java.util.ArrayList;
+
 
 public class MovieManager {
-
+    private Movie movie;
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
+    private SortStrategi sort;
 
     public MovieManager() {
         movieList.addAll(
@@ -36,24 +37,28 @@ public class MovieManager {
                 );
         }
 
-    public ObservableList<Movie> getProductList() {
+    public ObservableList<Movie> getMovieList() {
         return movieList;
     }
 
-    public void controlPrice(Movie movie, ObservableList<Movie> movies) {
-        if (movie.getPrice() < 0) {
-            movies.remove(1);
-            System.err.println("Movie removed due to invalid price");
-        }
+    public void setSortStrategi(SortStrategi sortStrategi) {
+        this.sort = sortStrategi;
+        FXCollections.sort(movieList, sort);
     }
 
-    public void controlRating(Movie movie) {
-        if (movie.setRating() < 0.0) {
-            try {
-                System.out.println("goddag");
-            } catch (RatingException e) {
-
-            }
+    public void removeMovie() throws MovieNotFoundException {
+        if (!movieList.contains(movie)) {
+            throw new MovieNotFoundException(" Movie not found: " + movie.getName());
+        }
+        movieList.remove(movie);
+    }
+    public Movie createMovieFromInput(String name, String priceText) throws InvalidMovieException {
+        try {
+            double price = Double.parseDouble(priceText);
+            if (price < 0) throw new InvalidMovieException("Price cannot be negative");
+            return new Movie(name, price);
+        } catch (NumberFormatException e) {
+            throw new InvalidMovieException("Price must be a number", e);
         }
     }
 }
