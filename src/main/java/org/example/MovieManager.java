@@ -2,6 +2,10 @@ package org.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.example.GUI.GUI;
+
+import java.util.ArrayList;
+
 public class MovieManager {
 
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
@@ -36,15 +40,21 @@ public class MovieManager {
         return movieList;
     }
 
-    public void controlPrice(Movie movie) {
-            if (movie.getPrice() < 0 ) {
-                try {
-                    System.out.println(" ");
-                    // do something here that removes the object that contains a price below 0
-                } catch (PriceException e) {
-                    System.err.println("Error");
-                }
+    public void controlPrice(Movie movie, ObservableList<Movie> movies) {
+        if (movie.getPrice() < 0) {
+            movies.remove(1);
+            System.err.println("Movie removed due to invalid price");
+        }
+    }
+
+    public void controlRating(Movie movie) {
+        if (movie.setRating() < 0.0) {
+            try {
+                System.out.println("goddag");
+            } catch (RatingException e) {
+
             }
+        }
     }
 }
 

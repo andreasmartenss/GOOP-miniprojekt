@@ -38,36 +38,36 @@ public class GUI extends Application {
 
         BorderPane root = new BorderPane();
 
-        TableView productTable = new TableView<Movie>();
+        TableView movieTable = new TableView<Movie>();
 
-        TableColumn productName = new TableColumn<Movie, String>("Name");
-        productName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
+        TableColumn movieName = new TableColumn<Movie, String>("Name");
+        movieName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
 
-        TableColumn<Movie, Integer> productPrice = new TableColumn<>("Price");
-        productPrice.setCellValueFactory(cellData ->
+        TableColumn<Movie, Integer> moviePrice = new TableColumn<>("Price");
+        moviePrice.setCellValueFactory(cellData ->
                         new SimpleIntegerProperty(
                                 cellData.getValue().getPrice()
                         ).asObject()
         );
 
-        TableColumn<Movie, Double> productRating = new TableColumn<>("Rating");
-        productRating.setCellValueFactory(cellData ->
+        TableColumn<Movie, Double> movieRating = new TableColumn<>("Rating");
+        movieRating.setCellValueFactory(cellData ->
                         new SimpleDoubleProperty(
                                 cellData.getValue().getRating()
                         ).asObject()
         );
 
 
-        TableColumn productType = new TableColumn<Movie, String>("Genre");
-        productType.setCellValueFactory(new PropertyValueFactory<Movie, String>("genre"));
+        TableColumn movieGenre = new TableColumn<Movie, String>("Genre");
+        movieGenre.setCellValueFactory(new PropertyValueFactory<Movie, String>("genre"));
 
-        productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+        movieTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
-        productTable.getColumns().addAll(
-                productName,
-                productPrice,
-                productRating,
-                productType
+        movieTable.getColumns().addAll(
+                movieName,
+                moviePrice,
+                movieRating,
+                movieGenre
         );
 
        FXCollections.sort(movieManager.getProductList(), sortByName);
@@ -75,7 +75,7 @@ public class GUI extends Application {
        FXCollections.sort(movieManager.getProductList(), sortByGenre);
        FXCollections.sort(movieManager.getProductList(), sortByRating);
 
-        productTable.setItems(movieManager.getProductList());
+        movieTable.setItems(movieManager.getProductList());
 
         Text header = new Text("Watch List");
         header.setFont(new Font(40));
@@ -85,12 +85,12 @@ public class GUI extends Application {
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
-            productTable.getItems().remove(0);
+            movieTable.getItems().remove(0);
         });
 
 
         HBox headerBox = new HBox(header, deleteButton);
-        VBox tablebox = new VBox(productTable);
+        VBox tablebox = new VBox(movieTable);
 
         VBox box = new VBox(headerBox, tablebox);
 
