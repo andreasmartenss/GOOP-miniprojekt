@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -41,6 +42,8 @@ public class GUI extends Application {
         BorderPane root = new BorderPane();
 
         TableView<Movie> movieTable = new TableView<>();
+        TextField searchBar = new TextField();
+
 
         TableColumn movieName = new TableColumn<Movie, String>("Name");
         movieName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
@@ -78,6 +81,13 @@ public class GUI extends Application {
         Text header = new Text("Watch List");
         header.setFont(new Font(40));
 
+        Button searchbutton = new Button(100, 50, 30, "Search");
+        searchbutton.setScaleX(0.4);
+        searchbutton.setScaleY(0.4);
+        searchbutton.setOnMousePressed(e -> {
+            movieTable.getItems().clear();
+            movieTable.getItems().addAll(movieManager.searchList(searchBar.getText(), //et eller andet her));
+        });
 
         Button deleteButton = new Button(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
@@ -116,10 +126,11 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByRating);
         });
 
-
+        HBox searchbox = new HBox(searchBar, searchbutton);
 
         HBox headerBox = new HBox(
                 header,
+                searchbox,
                 deleteButton
         );
 

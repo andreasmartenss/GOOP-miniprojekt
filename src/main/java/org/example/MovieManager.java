@@ -4,6 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.SortStrategi.SortStrategi;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class MovieManager {
@@ -52,14 +56,14 @@ public class MovieManager {
         }
         movieList.remove(movie);
     }
-    public Movie createMovieFromInput(String name, String priceText) throws InvalidMovieException {
-        try {
-            double price = Double.parseDouble(priceText);
-            if (price < 0) throw new InvalidMovieException("Price cannot be negative");
-            return new Movie(name, price);
-        } catch (NumberFormatException e) {
-            throw new InvalidMovieException("Price must be a number", e);
-        }
+
+    public List<String> searchList(String searchWords, List<String> listOfStrings) {
+        List<String> searchWordArray = Arrays.asList(searchWords.trim().split(" "));
+
+        return listOfStrings.stream().filter(input -> {
+           return searchWordArray.stream().allMatch(word ->
+                   input.toLowerCase().contains(word.toLowerCase()));
+       }).collect(Collectors.toList());
     }
 }
 
