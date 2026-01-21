@@ -72,7 +72,7 @@ class MovieManagerTest {
     }
 
     /**
-     * this test throws an exception when the given movie object is not contained in an observable list.
+     * this test throws an exception when the given movie object is not contained in an BbservableList.
      */
     @Test
     void removeMovie() {
