@@ -7,7 +7,6 @@ import org.example.SortStrategi.SortStrategi;
 
 public class MovieManager {
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
-    private SortStrategi sort;
 
     /**
      * This class is made as a controller to the Movie class, that contains all the logic
@@ -51,8 +50,7 @@ public class MovieManager {
      * @param sortStrategi This method implements the sorting interface logic in the movieList
      */
     public void setSortStrategi(SortStrategi sortStrategi) {
-        this.sort = sortStrategi;
-        FXCollections.sort(movieList, sort);
+        FXCollections.sort(movieList, sortStrategi);
     }
 
     /**

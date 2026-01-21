@@ -173,14 +173,14 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByRating);
         });
 
-        // Horizontal box that contains the searchbar, the search button and the back to the list button
+        // Horizontal box that contains the search bar, the search button and the back to the list button
         HBox searchBox = new HBox(
                 searchBar,
                 searchButton,
                 backToListButton
         );
 
-        // Horizontal box that contains the header, the searchbox from above and the delete button
+        // Horizontal box that contains the header, the searchBox from above and the delete button
         HBox headerBox = new HBox(
                 header,
                 searchBox,
