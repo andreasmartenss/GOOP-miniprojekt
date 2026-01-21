@@ -62,7 +62,7 @@ public class Button extends Group {
             UIButtonCircle2.setFill(Color.DARKRED);
         });
 
-        //  Function that changes the scale and color back when the pointer leaves the button
+        // Function that changes the scale and color back when the pointer leaves the button
         this.setOnMouseExited(e -> {
 
             double baseX = getScaleX() / 1.1;
