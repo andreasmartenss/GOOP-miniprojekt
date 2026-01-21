@@ -1,6 +1,5 @@
 package org.example.GUI;
 import javafx.scene.Group;
-
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -8,7 +7,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.animation.ScaleTransition;
 import javafx.util.Duration;
-
 
 public class Button extends Group {
 
@@ -22,9 +20,7 @@ public class Button extends Group {
      */
     public Button(int x, int y, int size, String labelText) {
 
-        /*
-          The button is build up in three independent shapes
-         */
+        // The button is build up in three independent shapes
         Rectangle UIButtonRec = new Rectangle(200, 80, Color.RED);
         UIButtonRec.setX(0);
         UIButtonRec.setY(0);
@@ -33,27 +29,19 @@ public class Button extends Group {
         UIButtonCircle1.setCenterX(200);
         UIButtonCircle1.setCenterY(40);
 
-
         Circle UIButtonCircle2 = new Circle(40, Color.RED);
         UIButtonCircle2.setCenterX(-5);
         UIButtonCircle2.setCenterY(40);
 
-        /*
-         Text label in the button
-         */
-
+        // Text label in the button
         Text label = new Text(labelText);
         label.setFont(Font.font(size));
         label.setFill(Color.WHITE);
         label.setX(x - label.getLayoutBounds().getWidth() / 2);
         label.setY(y);
 
-        /*
-           Group the shapes and label into one object
-         */
-
+        // Group the shapes and label into one object
         this.getChildren().addAll(UIButtonRec, UIButtonCircle1, UIButtonCircle2, label);
-
 
         /*
          Lambda function that changes the buttons scale and changes the colors when you hover
@@ -74,9 +62,7 @@ public class Button extends Group {
             UIButtonCircle2.setFill(Color.DARKRED);
         });
 
-        /*
-          Function that changes the scale and color back when the pointer leaves the button
-         */
+        //  Function that changes the scale and color back when the pointer leaves the button
         this.setOnMouseExited(e -> {
 
             double baseX = getScaleX() / 1.1;
@@ -91,7 +77,5 @@ public class Button extends Group {
             UIButtonCircle1.setFill(Color.RED);
             UIButtonCircle2.setFill(Color.RED);
         });
-
     }
-
 }

@@ -23,9 +23,8 @@ import org.example.SortStrategi.*;
 
 public class GUI extends Application {
 
-    /*
-      Declaring the strategies form the interface and the logic form the MovieManager class
-     */
+
+    // Declaring the strategies form the interface and the logic form the MovieManager class
     MovieManager movieManager = new MovieManager();
     SortStrategi sortByName = new SortByName();
     SortStrategi sortByPrice = new SortByPrice();

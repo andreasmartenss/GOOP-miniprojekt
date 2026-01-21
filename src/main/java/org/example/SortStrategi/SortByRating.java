@@ -4,7 +4,7 @@ import org.example.Movie;
 
 public class SortByRating implements SortStrategi {
     /**
-     * this class implements the SortStrategi interface
+     * This class implements the SortStrategi interface
      * @param r1 is the first movie object that contains a rating
      * @param r2 is the second movie object that contains a rating
      * @return will sort the values in ascending order

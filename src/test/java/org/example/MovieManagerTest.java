@@ -62,7 +62,7 @@ class MovieManagerTest {
         assertEquals("Action", movies.get(0).getGenre());
         assertEquals("Drama", movies.get(1).getGenre());
     }
-    
+
     // This test throws an exception when the given movie object is not contained in an ObservableList.
     @Test
     void removeMovie() {
