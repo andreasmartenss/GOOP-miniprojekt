@@ -9,6 +9,11 @@ public class MovieManager {
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
     private SortStrategi sort;
 
+    /**
+     * This class is made as a controller to the Movie class, that contains all the logic
+     * that has been implemented in the system.
+     * The MovieManager also contains a hard coded list of all the movie objects
+     */
     public MovieManager() {
         movieList.addAll(
                 new Movie("Scarface", 68,5.0, "action"),
@@ -35,15 +40,27 @@ public class MovieManager {
                 );
         }
 
+    /**
+     * @return an observable list of the list of movies stated above
+     */
     public ObservableList<Movie> getMovieList() {
         return movieList;
     }
 
+    /**
+     * @param sortStrategi This method implements the sorting interface logic in the movieList
+     */
     public void setSortStrategi(SortStrategi sortStrategi) {
         this.sort = sortStrategi;
         FXCollections.sort(movieList, sort);
     }
 
+    /**
+     * This method removes the selected movie, with also containing an exception that
+     * will throw on exception error if a movie is not found in the list
+     * @param movie the selected movie object
+     * @throws MovieNotFoundException will throw on exception error if a movie is not found in the list
+     */
     public void removeMovie(Movie movie) throws MovieNotFoundException {
         if (!movieList.contains(movie)) {
             throw new MovieNotFoundException(" Movie not found: " + movie.getName());
