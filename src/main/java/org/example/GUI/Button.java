@@ -44,7 +44,7 @@ public class Button extends Group {
         this.getChildren().addAll(UIButtonRec, UIButtonCircle1, UIButtonCircle2, label);
 
         /*
-         Lambda function that changes the buttons scale and changes the colors when you hover
+         Lambda expression that changes the buttons scale and changes the colors when you hover
          your mouse over the button
          */
         this.setOnMouseEntered(e -> {
