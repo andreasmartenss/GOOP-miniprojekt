@@ -23,28 +23,45 @@ import org.example.SortStrategi.*;
 
 public class GUI extends Application {
 
-    private final MovieManager movieManager = new MovieManager();
+    /**
+     * Declaring the strategies form the interface and the logic form the MovieManager class
+     */
+    MovieManager movieManager = new MovieManager();
     SortStrategi sortByName = new SortByName();
     SortStrategi sortByPrice = new SortByPrice();
     SortStrategi sortByGenre = new SortByGenre();
     SortStrategi sortByRating = new SortByRating();
 
+    /**
+     * @param args launches the application
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
-
+    /**
+     * This is the GUI
+     * @param primaryStage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     */
     @Override
     public void start(Stage primaryStage) {
 
+        // Border
         BorderPane root = new BorderPane();
 
+        // Table
         TableView<Movie> movieTable = new TableView<>();
 
+        // Search bar
         TextField searchBar = new TextField();
 
+        // Search result
         FilteredList<Movie> filteredMovies = new FilteredList<>(movieManager.getMovieList(), m -> true);
 
+        // The table columns that represents each of the attributes contained the Movie class
         TableColumn<Movie, String> movieName = new TableColumn<>("Name");
         movieName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
@@ -62,12 +79,13 @@ public class GUI extends Application {
                         ).asObject()
         );
 
-
         TableColumn<Movie, String> movieGenre = new TableColumn<>("Genre");
         movieGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
 
+        // Constrains the size of the table
         movieTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
+        // Gets the columns in the table
         movieTable.getColumns().addAll(
                 movieName,
                 moviePrice,
@@ -76,12 +94,15 @@ public class GUI extends Application {
         );
 
 
+        // Gets the objects within the movieManager that returns the ObservableList of movie objects
         movieTable.setItems(movieManager.getMovieList());
         movieTable.setItems(filteredMovies);
 
+        // Header
         Text header = new Text("Watch List");
         header.setFont(new Font(40));
 
+        // Button object used as an interactive button in the GUI. This is the search button
         Button searchbutton = new Button(100, 50, 30, "Search");
         searchbutton.setScaleX(0.4);
         searchbutton.setScaleY(0.4);
@@ -92,20 +113,23 @@ public class GUI extends Application {
             );
         });
 
-        Button backButton = new Button(100, 50, 30, "Back to list");
-        backButton.setScaleX(0.4);
-        backButton.setScaleY(0.4);
-        backButton.setOnMousePressed(e -> {
+        // This button returns the user back to the list after searching for a specific movie
+        Button backToListButton = new Button(100, 50, 30, "Back to list");
+        backToListButton.setScaleX(0.4);
+        backToListButton.setScaleY(0.4);
+        backToListButton.setOnMousePressed(e -> {
             filteredMovies.setPredicate(movie ->
                     true
             );
         });
 
+        //This button deletes the selected movie.
         Button deleteButton = new Button(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
             Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+            //FORKLAR HVAD DER SKER HER
             try {
                 movieManager.removeMovie(selectedMovie);
             } catch (MovieNotFoundException ex) {
@@ -113,6 +137,7 @@ public class GUI extends Application {
             }
         });
 
+        // This button implements the sort strategi and sorts names in ascending order
         Button sortByNameButton = new Button(100, 50, 30, "Sort by Name");
         sortByNameButton.setScaleX(0.4);
         sortByNameButton.setScaleY(0.4);
@@ -120,6 +145,7 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByName);
         });
 
+        // This button implements the sort strategi and sorts prices in ascending order
         Button sortByPriceButton = new Button(100, 50, 30, "Sort by price");
         sortByPriceButton.setScaleX(0.4);
         sortByPriceButton.setScaleY(0.4);
@@ -128,6 +154,7 @@ public class GUI extends Application {
         });
 
 
+        // This button implements the sort strategi and sorts genres in ascending order
         Button sortByGenreButton = new Button(100, 50, 30, "Sort by genre");
         sortByGenreButton.setScaleX(0.4);
         sortByGenreButton.setScaleY(0.4);
@@ -135,6 +162,7 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByGenre);
         });
 
+        // This button implements the sort strategi and sorts rating in ascending order
         Button sortByRatingButton = new Button(100, 50, 30, "Sort by rating");
         sortByRatingButton.setScaleX(0.4);
         sortByRatingButton.setScaleY(0.4);
@@ -142,18 +170,21 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByRating);
         });
 
+        // Horizontal box that contains the searchbar, the search button and the back to the list button
         HBox searchbox = new HBox(
                 searchBar,
                 searchbutton,
-                backButton
+                backToListButton
         );
 
+        // Horizontal box that contains the header, the searchbox from above and the delete button
         HBox headerBox = new HBox(
                 header,
                 searchbox,
                 deleteButton
         );
 
+        // This box contains the individual buttons for each sorting strategi
         HBox buttonBox = new HBox(
                 sortByNameButton,
                 sortByPriceButton,
@@ -161,18 +192,23 @@ public class GUI extends Application {
                 sortByGenreButton
         );
 
+        // Vertical box for the movie table
         VBox tableBox = new VBox(movieTable);
 
+        // Box that contains the previous boxed and places them vertically
         VBox box = new VBox(
                 headerBox,
                 tableBox,
                 buttonBox
         );
 
+        // Puts the box with the other boxes in the border pane
         root.setCenter(box);
 
+        // Size of the scene
         Scene scene= new Scene(root, 1920, 1080);
 
+        // Sets the scene, title and shows the scene
         primaryStage.setScene(scene);
         primaryStage.setTitle("Watch List");
         primaryStage.show();
