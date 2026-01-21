@@ -54,20 +54,20 @@ class MovieManagerTest {
     @Test
     void SortByGenre_ascending() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
-                new Movie("B", 25, 5.0, "Action"),
-                new Movie("A", 23, 4.5, "Drama")
+                new Movie("B", 25, 5.0, "action"),
+                new Movie("A", 23, 4.5, "drama")
         );
 
         movies.sort(new SortByGenre());
-        assertEquals("Action", movies.get(0).getGenre());
-        assertEquals("Drama", movies.get(1).getGenre());
+        assertEquals("action", movies.get(0).getGenre());
+        assertEquals("drama", movies.get(1).getGenre());
     }
 
     // This test throws an exception when the given movie object is not contained in an ObservableList.
     @Test
     void removeMovie() {
         MovieManager movieManager = new MovieManager();
-        Movie movie = new Movie("Test", 34, 5.0, "action");
+        Movie movie = new Movie("Test", 34, 5.0, "drama");
 
         assertThrows(MovieNotFoundException.class, () -> {
                     movieManager.removeMovie(movie);

@@ -102,10 +102,10 @@ public class GUI extends Application {
         header.setFont(new Font(40));
 
         // Button object used as an interactive button in the GUI. This is the search button
-        Button searchbutton = new Button(100, 50, 30, "Search");
-        searchbutton.setScaleX(0.4);
-        searchbutton.setScaleY(0.4);
-        searchbutton.setOnMousePressed(e -> {
+        Button searchButton = new Button(100, 50, 30, "Search");
+        searchButton.setScaleX(0.4);
+        searchButton.setScaleY(0.4);
+        searchButton.setOnMousePressed(e -> {
             String search = searchBar.getText().toLowerCase().trim();
             filteredMovies.setPredicate(movie ->
                     movie.getName().toLowerCase().contains(search)
@@ -174,16 +174,16 @@ public class GUI extends Application {
         });
 
         // Horizontal box that contains the searchbar, the search button and the back to the list button
-        HBox searchbox = new HBox(
+        HBox searchBox = new HBox(
                 searchBar,
-                searchbutton,
+                searchButton,
                 backToListButton
         );
 
         // Horizontal box that contains the header, the searchbox from above and the delete button
         HBox headerBox = new HBox(
                 header,
-                searchbox,
+                searchBox,
                 deleteButton
         );
 
