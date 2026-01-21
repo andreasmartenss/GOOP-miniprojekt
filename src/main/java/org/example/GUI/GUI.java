@@ -29,9 +29,6 @@ public class GUI extends Application {
     SortStrategi sortByGenre = new SortByGenre();
     SortStrategi sortByRating = new SortByRating();
 
-
-
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -43,11 +40,10 @@ public class GUI extends Application {
         BorderPane root = new BorderPane();
 
         TableView<Movie> movieTable = new TableView<>();
+
         TextField searchBar = new TextField();
 
-        FilteredList<Movie> filteredMovies =
-                new FilteredList<>(movieManager.getMovieList(), m -> true);
-
+        FilteredList<Movie> filteredMovies = new FilteredList<>(movieManager.getMovieList(), m -> true);
 
         TableColumn<Movie, String> movieName = new TableColumn<>("Name");
         movieName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -100,7 +96,9 @@ public class GUI extends Application {
         backButton.setScaleX(0.4);
         backButton.setScaleY(0.4);
         backButton.setOnMousePressed(e -> {
-            filteredMovies.setPredicate(m -> true);
+            filteredMovies.setPredicate(movie ->
+                    true
+            );
         });
 
         Button deleteButton = new Button(100, 50, 30, "Delete");
@@ -144,7 +142,11 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByRating);
         });
 
-        HBox searchbox = new HBox(searchBar, searchbutton, backButton);
+        HBox searchbox = new HBox(
+                searchBar,
+                searchbutton,
+                backButton
+        );
 
         HBox headerBox = new HBox(
                 header,
@@ -156,12 +158,16 @@ public class GUI extends Application {
                 sortByNameButton,
                 sortByPriceButton,
                 sortByRatingButton,
-                sortByGenreButton)
-                ;
+                sortByGenreButton
+        );
 
         VBox tableBox = new VBox(movieTable);
 
-        VBox box = new VBox(headerBox, tableBox, buttonBox);
+        VBox box = new VBox(
+                headerBox,
+                tableBox,
+                buttonBox
+        );
 
         root.setCenter(box);
 
