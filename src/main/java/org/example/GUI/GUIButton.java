@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import javafx.animation.ScaleTransition;
 import javafx.util.Duration;
 
-public class Button extends Group {
+public class GUIButton extends Group {
 
     /**
      * @author Andreas Martens
@@ -18,7 +18,7 @@ public class Button extends Group {
      * @param size sets the font
      * @param labelText is the parameter that creates a string within the button
      */
-    public Button(int x, int y, int size, String labelText) {
+    public GUIButton(int x, int y, int size, String labelText) {
 
         // The button is build up in three independent shapes
         Rectangle UIButtonRec = new Rectangle(200, 80, Color.RED);

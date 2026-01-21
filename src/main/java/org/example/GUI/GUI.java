@@ -102,7 +102,7 @@ public class GUI extends Application {
         header.setFont(new Font(40));
 
         // Button object used as an interactive button in the GUI. This is the search button
-        Button searchButton = new Button(100, 50, 30, "Search");
+        GUIButton searchButton = new GUIButton(100, 50, 30, "Search");
         searchButton.setScaleX(0.4);
         searchButton.setScaleY(0.4);
         searchButton.setOnMousePressed(e -> {
@@ -113,7 +113,7 @@ public class GUI extends Application {
         });
 
         // This button returns the user back to the list after searching for a specific movie
-        Button backToListButton = new Button(100, 50, 30, "Back to list");
+        GUIButton backToListButton = new GUIButton(100, 50, 30, "Back to list");
         backToListButton.setScaleX(0.4);
         backToListButton.setScaleY(0.4);
         backToListButton.setOnMousePressed(e -> {
@@ -123,7 +123,7 @@ public class GUI extends Application {
         });
 
         //This button deletes the selected movie.
-        Button deleteButton = new Button(100, 50, 30, "Delete");
+        GUIButton deleteButton = new GUIButton(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
@@ -141,7 +141,7 @@ public class GUI extends Application {
         });
 
         // This button implements the sort strategi and sorts names in ascending order
-        Button sortByNameButton = new Button(100, 50, 30, "Sort by Name");
+        GUIButton sortByNameButton = new GUIButton(100, 50, 30, "Sort by Name");
         sortByNameButton.setScaleX(0.4);
         sortByNameButton.setScaleY(0.4);
         sortByNameButton.setOnMousePressed(e -> {
@@ -149,7 +149,7 @@ public class GUI extends Application {
         });
 
         // This button implements the sort strategi and sorts prices in ascending order
-        Button sortByPriceButton = new Button(100, 50, 30, "Sort by price");
+        GUIButton sortByPriceButton = new GUIButton(100, 50, 30, "Sort by price");
         sortByPriceButton.setScaleX(0.4);
         sortByPriceButton.setScaleY(0.4);
         sortByPriceButton.setOnMousePressed(e -> {
@@ -158,7 +158,7 @@ public class GUI extends Application {
 
 
         // This button implements the sort strategi and sorts genres in ascending order
-        Button sortByGenreButton = new Button(100, 50, 30, "Sort by genre");
+        GUIButton sortByGenreButton = new GUIButton(100, 50, 30, "Sort by genre");
         sortByGenreButton.setScaleX(0.4);
         sortByGenreButton.setScaleY(0.4);
         sortByGenreButton.setOnMousePressed(e -> {
@@ -166,7 +166,7 @@ public class GUI extends Application {
         });
 
         // This button implements the sort strategi and sorts rating in ascending order
-        Button sortByRatingButton = new Button(100, 50, 30, "Sort by rating");
+        GUIButton sortByRatingButton = new GUIButton(100, 50, 30, "Sort by rating");
         sortByRatingButton.setScaleX(0.4);
         sortByRatingButton.setScaleY(0.4);
         sortByRatingButton.setOnMousePressed(e -> {

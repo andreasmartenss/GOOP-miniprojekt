@@ -26,7 +26,7 @@ class MovieManagerTest {
 
     // This tests if the SortByName strategi works
     @Test
-    void SortByName_ascending() {
+    void SortByName_alphabetically() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
                 new Movie("B", 25, 5.0, "test"),
                 new Movie("A", 23, 4.5, "test")
@@ -52,7 +52,7 @@ class MovieManagerTest {
 
     // This tests if the SortByGenre strategi works
     @Test
-    void SortByGenre_ascending() {
+    void SortByGenre_alphabetically() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
                 new Movie("B", 25, 5.0, "action"),
                 new Movie("A", 23, 4.5, "drama")
