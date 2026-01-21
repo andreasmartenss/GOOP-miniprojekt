@@ -22,8 +22,8 @@ public class Button extends Group {
      */
     public Button(int x, int y, int size, String labelText) {
 
-        /**
-         * the button is build up in three independent shapes
+        /*
+          The button is build up in three independent shapes
          */
         Rectangle UIButtonRec = new Rectangle(200, 80, Color.RED);
         UIButtonRec.setX(0);
@@ -38,8 +38,8 @@ public class Button extends Group {
         UIButtonCircle2.setCenterX(-5);
         UIButtonCircle2.setCenterY(40);
 
-        /**
-         * Text label in the button
+        /*
+         Text label in the button
          */
 
         Text label = new Text(labelText);
@@ -48,16 +48,16 @@ public class Button extends Group {
         label.setX(x - label.getLayoutBounds().getWidth() / 2);
         label.setY(y);
 
-        /**
-         * Group the shapes and label into one object
+        /*
+           Group the shapes and label into one object
          */
 
         this.getChildren().addAll(UIButtonRec, UIButtonCircle1, UIButtonCircle2, label);
 
 
-        /**
-         * Lambda function that changes the buttons scale and changes the colors when you hover
-         * your mouse over the button
+        /*
+         Lambda function that changes the buttons scale and changes the colors when you hover
+         your mouse over the button
          */
         this.setOnMouseEntered(e -> {
 
@@ -74,8 +74,8 @@ public class Button extends Group {
             UIButtonCircle2.setFill(Color.DARKRED);
         });
 
-        /**
-         * Function that changes the scale and color back when the pointer leaves the button
+        /*
+          Function that changes the scale and color back when the pointer leaves the button
          */
         this.setOnMouseExited(e -> {
 

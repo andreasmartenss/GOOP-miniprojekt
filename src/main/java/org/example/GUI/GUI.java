@@ -23,8 +23,8 @@ import org.example.SortStrategi.*;
 
 public class GUI extends Application {
 
-    /**
-     * Declaring the strategies form the interface and the logic form the MovieManager class
+    /*
+      Declaring the strategies form the interface and the logic form the MovieManager class
      */
     MovieManager movieManager = new MovieManager();
     SortStrategi sortByName = new SortByName();
@@ -129,7 +129,11 @@ public class GUI extends Application {
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
             Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
-            //FORKLAR HVAD DER SKER HER
+
+            /*
+              The try block executes the removeMovie method inside the MovieManager class.
+              The catch block throws an error if the selected movie is not within movieList.
+              */
             try {
                 movieManager.removeMovie(selectedMovie);
             } catch (MovieNotFoundException ex) {
