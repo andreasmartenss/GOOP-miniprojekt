@@ -26,10 +26,6 @@ public class Movie {
         return rating;
     }
 
-    public double setRating() {
-        return rating;
-    }
-
     public String getGenre() {
         return this.genre;
     }

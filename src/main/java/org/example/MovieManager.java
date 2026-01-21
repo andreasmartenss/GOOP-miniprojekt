@@ -4,14 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.SortStrategi.SortStrategi;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 public class MovieManager {
-    private Movie movie;
     private final ObservableList<Movie> movieList = FXCollections.observableArrayList();
     private SortStrategi sort;
 
@@ -50,20 +44,11 @@ public class MovieManager {
         FXCollections.sort(movieList, sort);
     }
 
-    public void removeMovie() throws MovieNotFoundException {
+    public void removeMovie(Movie movie) throws MovieNotFoundException {
         if (!movieList.contains(movie)) {
             throw new MovieNotFoundException(" Movie not found: " + movie.getName());
         }
         movieList.remove(movie);
-    }
-
-    public List<String> searchList(String searchWords, List<String> listOfStrings) {
-        List<String> searchWordArray = Arrays.asList(searchWords.trim().split(" "));
-
-        return listOfStrings.stream().filter(input -> {
-           return searchWordArray.stream().allMatch(word ->
-                   input.toLowerCase().contains(word.toLowerCase()));
-       }).collect(Collectors.toList());
     }
 }
 

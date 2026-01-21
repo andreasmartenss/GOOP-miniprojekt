@@ -3,7 +3,7 @@ package org.example.GUI;
 import javafx.application.Application;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.example.Movie;
 import javafx.scene.control.TableView;
 import org.example.MovieManager;
+import org.example.MovieNotFoundException;
 import org.example.SortStrategi.*;
 
 
@@ -44,9 +45,12 @@ public class GUI extends Application {
         TableView<Movie> movieTable = new TableView<>();
         TextField searchBar = new TextField();
 
+        FilteredList<Movie> filteredMovies =
+                new FilteredList<>(movieManager.getMovieList(), m -> true);
 
-        TableColumn movieName = new TableColumn<Movie, String>("Name");
-        movieName.setCellValueFactory(new PropertyValueFactory<Movie, String>("name"));
+
+        TableColumn<Movie, String> movieName = new TableColumn<>("Name");
+        movieName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         TableColumn<Movie, Integer> moviePrice = new TableColumn<>("Price");
         moviePrice.setCellValueFactory(cellData ->
@@ -63,8 +67,8 @@ public class GUI extends Application {
         );
 
 
-        TableColumn movieGenre = new TableColumn<Movie, String>("Genre");
-        movieGenre.setCellValueFactory(new PropertyValueFactory<Movie, String>("genre"));
+        TableColumn<Movie, String> movieGenre = new TableColumn<>("Genre");
+        movieGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
 
         movieTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
@@ -77,6 +81,7 @@ public class GUI extends Application {
 
 
         movieTable.setItems(movieManager.getMovieList());
+        movieTable.setItems(filteredMovies);
 
         Text header = new Text("Watch List");
         header.setFont(new Font(40));
@@ -85,8 +90,17 @@ public class GUI extends Application {
         searchbutton.setScaleX(0.4);
         searchbutton.setScaleY(0.4);
         searchbutton.setOnMousePressed(e -> {
-            movieTable.getItems().clear();
-            movieTable.getItems().addAll(movieManager.searchList(searchBar.getText(), //et eller andet her));
+            String search = searchBar.getText().toLowerCase().trim();
+            filteredMovies.setPredicate(movie ->
+                    movie.getName().toLowerCase().contains(search)
+            );
+        });
+
+        Button backButton = new Button(100, 50, 30, "Back to list");
+        backButton.setScaleX(0.4);
+        backButton.setScaleY(0.4);
+        backButton.setOnMousePressed(e -> {
+            filteredMovies.setPredicate(m -> true);
         });
 
         Button deleteButton = new Button(100, 50, 30, "Delete");
@@ -94,7 +108,11 @@ public class GUI extends Application {
         deleteButton.setScaleY(0.4);
         deleteButton.setOnMousePressed(e -> {
             Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
-            movieTable.getItems().remove(selectedMovie);
+            try {
+                movieManager.removeMovie(selectedMovie);
+            } catch (MovieNotFoundException ex) {
+                System.err.println(ex.getMessage());
+            }
         });
 
         Button sortByNameButton = new Button(100, 50, 30, "Sort by Name");
@@ -126,7 +144,7 @@ public class GUI extends Application {
             movieManager.setSortStrategi(sortByRating);
         });
 
-        HBox searchbox = new HBox(searchBar, searchbutton);
+        HBox searchbox = new HBox(searchBar, searchbutton, backButton);
 
         HBox headerBox = new HBox(
                 header,
@@ -141,9 +159,9 @@ public class GUI extends Application {
                 sortByGenreButton)
                 ;
 
-        VBox tablebox = new VBox(movieTable);
+        VBox tableBox = new VBox(movieTable);
 
-        VBox box = new VBox(headerBox, tablebox, buttonBox);
+        VBox box = new VBox(headerBox, tableBox, buttonBox);
 
         root.setCenter(box);
 
