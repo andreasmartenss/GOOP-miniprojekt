@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieManagerTest {
 
+    /**
+     * this tests if the SortByPrice strategi works
+     */
     @Test
     void SortByPrice_ascending() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
@@ -23,6 +26,9 @@ class MovieManagerTest {
         assertEquals(25, movies.get(1).getPrice());
     }
 
+    /**
+     * this tests if the SortByName strategi works
+     */
     @Test
     void SortByName_ascending() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
@@ -35,6 +41,9 @@ class MovieManagerTest {
         assertEquals("B", movies.get(1).getName());
     }
 
+    /**
+     * this tests if the SortByRating strategi works
+     */
     @Test
     void SortByRating_ascending() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
@@ -47,6 +56,9 @@ class MovieManagerTest {
         assertEquals(5.0, movies.get(1).getRating());
     }
 
+    /**
+     * this tests if the SortByGenre strategi works
+     */
     @Test
     void SortByGenre_ascending() {
         ObservableList<Movie> movies = FXCollections.observableArrayList(
@@ -59,13 +71,16 @@ class MovieManagerTest {
         assertEquals("Drama", movies.get(1).getGenre());
     }
 
+    /**
+     * this test throws an exception when the given movie object is not contained in an observable list.
+     */
     @Test
     void removeMovie() {
         MovieManager movieManager = new MovieManager();
         Movie movie = new Movie("Test", 34, 5.0, "action");
 
-        assertThrows(MovieNotFoundException.class, () ->
-                movieManager.removeMovie(movie));
-
+        assertThrows(MovieNotFoundException.class, () -> {
+                    movieManager.removeMovie(movie);
+                });
     }
 }
