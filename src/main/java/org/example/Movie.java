@@ -2,13 +2,13 @@ package org.example;
 
 public class Movie {
 
-    String name;
-    int price;
-    double rating;
-    String genre;
+    private final String name;
+    private int price;
+    private double rating;
+    private final String genre;
 
     /**
-     * This is the class for the movie object
+     * This is the constructor for the movie class
      * @param n is the parameter that equals to the name attribute
      * @param p is the parameter that equals to the price attribute
      * @param r is the parameter that equals to the rating attribute
