@@ -8,7 +8,7 @@ public class SortByGenre implements SortStrategi {
      * This class implements the SortStrategi interface
      * @param g1 is the first movie object that contains a genre
      * @param g2 is the second movie object that contains a genre
-     * @return will sort the values in ascending order.
+     * @return will sort the values in alphabetical order.
      */
     @Override
     public int compare(Movie g1, Movie g2) {

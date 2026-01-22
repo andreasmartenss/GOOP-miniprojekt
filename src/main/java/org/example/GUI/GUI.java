@@ -122,7 +122,7 @@ public class GUI extends Application {
             );
         });
 
-        //This button deletes the selected movie.
+        // This button deletes the selected movie.
         GUIButton deleteButton = new GUIButton(100, 50, 30, "Delete");
         deleteButton.setScaleX(0.4);
         deleteButton.setScaleY(0.4);
