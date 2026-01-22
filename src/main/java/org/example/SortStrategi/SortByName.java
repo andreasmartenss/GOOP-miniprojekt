@@ -3,6 +3,7 @@ package org.example.SortStrategi;
 import org.example.Movie;
 
 public class SortByName implements SortStrategi {
+
     /**
      * This class implements the SortStrategi interface
      * @param n1 is the first movie object that contains a name
