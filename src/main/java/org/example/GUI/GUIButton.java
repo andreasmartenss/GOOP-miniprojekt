@@ -62,7 +62,7 @@ public class GUIButton extends Group {
             UIButtonCircle2.setFill(Color.DARKRED);
         });
 
-        // Lambda expression that changes the scale and color back when the pointer leaves the button
+        // Lambda expression that changes the scale and color back when the mouse leaves the button
         this.setOnMouseExited(e -> {
 
             double baseX = getScaleX() / 1.1;
